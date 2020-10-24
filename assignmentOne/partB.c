@@ -123,7 +123,7 @@ int main(int argc, char* argv[])
     pthread_t consumer_thread_id[n];
 
     // create and start the producer threads
-    //for(i = 0; i < 4; i++)
+    //for(i = 0; i < m; i++) //was going to add in another input to manage the number of producers
     //{
     pthread_create(&producer_thread_id[0], NULL, producer_thread, NULL);
     //}
@@ -134,7 +134,7 @@ int main(int argc, char* argv[])
         pthread_create(&consumer_thread_id[i], NULL, consumer_thread, NULL);
     }
 
-    // wait only for the first thread to return, may do for all using a loop
+    // wait only for the first thread to return
     pthread_join(producer_thread_id[0], NULL);
     pthread_join(consumer_thread_id[i], NULL);
 
